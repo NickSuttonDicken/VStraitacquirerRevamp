@@ -158,6 +158,17 @@ namespace traitacquirer
             charDlg.RenderTabHandlers.Add(composeTraitsTab);
             
             api.Event.BlockTexturesLoaded += cleanupTraitsTab;
+
+            //Generate Handbook Pages
+            api.ModLoader.GetModSystem<ModSystemSurvivalHandbook>().OnInitCustomPages += traitacquirerModSystem_OnInitCustomPages;
+        }
+
+        public void traitacquirerModSystem_OnInitCustomPages(List<GuiHandbookPage> pages)
+        {
+            foreach (ExtendedTrait trait in traits)
+            {
+                pages.Add(new GuiHandbookExtendedTraitPage(capi, trait));
+            }
         }
 
         private void cleanupTraitsTab()
