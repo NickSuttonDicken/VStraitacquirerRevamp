@@ -1,5 +1,5 @@
 name: Bugreport
-description: You can report a vanilla bug or issue here.
+description: You can report a bug or issue here.
 labels: ["status: new"]
 
 body:
@@ -9,6 +9,14 @@ body:
       label: Game Version
       description: What Game Version where you using?
       placeholder: v1.17.9
+    validations:
+      required: false
+    type: input
+    id: modver
+    attributes:
+      label: Mod Version
+      description: What Mod Version where you using?
+      placeholder: v0.9.6
     validations:
       required: false
   - type: dropdown
@@ -22,14 +30,12 @@ body:
         - Linux
     validations:
       required: false
-  - type: dropdown
+  - type: input
     id: modded
     attributes:
-      label: Modded
-      description: Did you use mods.
-      options:
-        - Modded
-        - Vanilla
+      label: Mods
+      description: What other mods add traits or classes?
+      placeholder: Explain it here.
     validations:
       required: false
   - type: dropdown
