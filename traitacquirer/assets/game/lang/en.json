@@ -1,0 +1,23 @@
+{
+  "traittypename-Positive": "Positive",
+  "traittypename-Mixed": "Mixed",
+  "traittypename-Negative": "Negative",
+  "traitacquirer-desc-text": "Description",
+  "traitacquirer-attr-text": "Attributes",
+  "traitacquirer-exclusive-text": "Exclusive With",
+  "traitacquirer-traitcode-text": "Trait Code",
+  "traitacquirer-traittype-text": "Trait Type",
+  "traitacquirer-acquiretraitcommand-desc": "Gives the caller the given Trait, removes with the rm flag, overrides exclusivity with the force flag",
+  "traitacquirer-givetraitcommand-desc": "Gives the given Trait to the chosen player, removes with the rm flag, overrides exclusivity with the force flag",
+  "traitname-farsighted": "Farsighted",
+  "traitname-claustrophobic": "Claustrophobic",
+  "traitname-frail": "Frail",
+  "traitname-nervous": "Nervous",
+  "traitname-ravenous": "Ravenous",
+  "traitname-nearsighted": "Nearsighted",
+  "traitname-heavyhanded": "Heavyhanded",
+  "traitname-weak": "Weak",
+  "traitname-civil": "Civil",
+  "traitname-kind": "Kind",
+  "handbook-category-trait": "Traits"
+}

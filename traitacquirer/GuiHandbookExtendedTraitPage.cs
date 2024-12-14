@@ -56,13 +56,13 @@ namespace traitacquirer
             }
 
             fulldesc.AppendLine($"<font {colour} size=\"24\"><strong>" + Title + "</strong></font>\n");
-            //fulldesc.AppendLine($"PageCode: {pageCode}");
-            fulldesc.AppendLine($"Trait Type: <a href=\"handbook://TraitTypeInfo-{trait.Type}\">" + Lang.Get("traittypename-" + trait.Type) + "</a>"); //Needs localising
+            fulldesc.AppendLine(Lang.Get("traitacquirer-traitcode-text") + $": {trait.Code}");
+            fulldesc.AppendLine(Lang.Get("traitacquirer-traittype-text") + $": <a href=\"handbook://TraitTypeInfo-{trait.Type}\">" + Lang.Get("traittypename-" + trait.Type) + "</a>");
 
             string desc = Lang.GetIfExists("traitdesc-" + trait.Code);
             if (desc != null)
             {
-                fulldesc.AppendLine("Description: "); //Needs localising
+                fulldesc.AppendLine(Lang.Get("traitacquirer-desc-text") + ": ");
                 fulldesc.AppendLine(desc);
             }
             
@@ -73,7 +73,7 @@ namespace traitacquirer
             }
             if (attributes.Length > 0)
             {
-                fulldesc.AppendLine("Attribute Modifiers: "); //Needs localising
+                fulldesc.AppendLine(Lang.Get("traitacquirer-attr-text") + ": ");
                 fulldesc.Append(attributes);
             }
 
@@ -83,7 +83,7 @@ namespace traitacquirer
                     if (exclusivites.Length > 0) exclusivites.Append(", ");
                     exclusivites.Append($"<a href=\"handbook://ExtendedTraitInfo-{val}\">" + Lang.Get("traitname-" + val) + $"</a>");
                 }
-                fulldesc.AppendLine("Exclusive With: "); //Needs localising
+                fulldesc.AppendLine(Lang.Get("traitacquirer-exclusive-text") + ": ");
                 fulldesc.Append(exclusivites);
             }
 
