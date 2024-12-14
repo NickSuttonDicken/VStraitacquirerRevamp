@@ -378,26 +378,50 @@ namespace traitacquirer
 
             //Update the trait list and apply their effects
             plr.Entity.WatchedAttributes.SetStringArray("extraTraits", newExtraTraits.ToArray());
-            applyTraitAttributes(plr.Entity);
             plr.Entity.WatchedAttributes.MarkPathDirty("extraTraits");
+            applyTraitAttributes(plr.Entity, addtraits, removetraits);
             plr.Entity.World.PlaySoundAt(new AssetLocation("sounds/effect/writing"), plr.Entity);
             return true;
         }
 
-        public void applyTraitAttributes(EntityPlayer eplr)
+        private void applyTraitAttributes(EntityPlayer eplr, string[] addtraits, string[] removetraits)
         {
             string classcode = eplr.WatchedAttributes.GetString("characterClass");
             CharacterClass charclass = characterClasses.FirstOrDefault(c => c.Code == classcode);
             if (charclass == null) throw new ArgumentException("Not a valid character class code!");
 
-            // Reset 
-            foreach (var stats in eplr.Stats)
+            //Remove trait attributes
+            foreach (string traitcode in removetraits)
             {
-                foreach (var statmod in stats.Value.ValuesByKey)
+                ExtendedTrait trait = TraitsByCode[traitcode];
+                foreach (var attr in trait.Attributes)
+                {
+                    eplr.Stats[attr.Key].Remove($"trait_{traitcode}");
+                }
+            }
+
+            //Add trait attributes
+            foreach (string traitcode in addtraits)
+            {
+                ExtendedTrait trait = TraitsByCode[traitcode];
+                foreach (var attr in trait.Attributes)
+                {
+                    eplr.Stats.Set(attr.Key, $"trait_{traitcode}", (float)attr.Value, true);
+                }
+            }
+
+            //Mark Dirty
+            eplr.GetBehavior<EntityBehaviorHealth>()?.MarkDirty();
+
+            /*
+            // Reset 
+            foreach (var stat in eplr.Stats)
+            {
+                foreach (var statmod in stat.Value.ValuesByKey)
                 {
                     if (statmod.Key.Length >= 5 ? statmod.Key[..5] == "trait" : false)
                     {
-                        stats.Value.Remove(statmod.Key);
+                        stat.Value.Remove(statmod.Key);
                     }
                 }
             }
@@ -416,12 +440,13 @@ namespace traitacquirer
                         string attrcode = val.Key;
                         double attrvalue = val.Value;
 
-                        eplr.Stats.Set($"trait_{attrcode}", traitcode, (float)attrvalue, true);
+                        eplr.Stats.Set(attrcode, $"trait_{traitcode}", (float)attrvalue, true);
                     }
                 }
             }
-
+            
             eplr.GetBehavior<EntityBehaviorHealth>()?.MarkDirty();
+            */
         }
         public void loadCharacterClasses() //Taken from SurvivalMod Character.cs, CharacterSystem class where it is a private method
         {
