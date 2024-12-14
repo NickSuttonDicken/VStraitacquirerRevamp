@@ -1,0 +1,19 @@
+[
+  {
+    "file": "game:config/traits",
+    "op": "addeach",
+    "path": "/-",
+    "condition": {
+      "when": "testTrait",
+      "isValue": "true"
+    },
+    "value": [
+      {
+        "code": "test",
+        "type": "mixed",
+        "attributes": {},
+        "exclusiveWith": ["focused"]
+      }
+    ]
+  }
+]
