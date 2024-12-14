@@ -1,6 +1,6 @@
 [
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "add",
     "path": "/temp",
     "side": "server",
@@ -78,46 +78,50 @@
   },
 
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "move",
     "frompath": "/temp/0",
-    "path": "/attributes/tradeProps/selling/list/-",
+    "path": "/selling/list/-",
     "side": "server",
     "condition": {
       "when": "classManuals",
@@ -126,46 +130,50 @@
   },
 
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "move",
     "frompath": "/temp/0",
-    "path": "/attributes/tradeProps/selling/list/-",
+    "path": "/selling/list/-",
     "side": "server",
     "condition": {
       "when": "classManuals",
@@ -174,46 +182,50 @@
   },
 
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "move",
     "frompath": "/temp/0",
-    "path": "/attributes/tradeProps/selling/list/-",
+    "path": "/selling/list/-",
     "side": "server",
     "condition": {
       "when": "classManuals",
@@ -222,46 +234,50 @@
   },
 
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "move",
     "frompath": "/temp/0",
-    "path": "/attributes/tradeProps/selling/list/-",
+    "path": "/selling/list/-",
     "side": "server",
     "condition": {
       "when": "classManuals",
@@ -270,46 +286,50 @@
   },
 
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/stock/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarStock",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/avg",
+    "side": "server",
     "condition": {
       "when": "manualsAvgPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "replace",
     "path": "/temp/0/price/var",
+    "side": "server",
     "condition": {
       "when": "manualsVarPrice",
       "useValue": true
     }
   },
   {
-    "file": "game:entities/humanoid/trader-treasurehunter",
+    "file": "game:config/tradelists/trader-treasurehunter",
     "op": "move",
     "frompath": "/temp/0",
-    "path": "/attributes/tradeProps/selling/list/-",
+    "path": "/selling/list/-",
     "side": "server",
     "condition": {
       "when": "classManuals",
