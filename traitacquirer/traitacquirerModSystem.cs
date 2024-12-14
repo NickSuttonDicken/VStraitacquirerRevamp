@@ -165,9 +165,13 @@ namespace traitacquirer
 
         public void traitacquirerModSystem_OnInitCustomPages(List<GuiHandbookPage> pages)
         {
-            foreach (ExtendedTrait trait in traits)
+            foreach (ExtendedTrait trait in traits) //Generate a page for each trait
             {
                 pages.Add(new GuiHandbookExtendedTraitPage(capi, trait));
+            }
+            foreach (int type in Enum.GetValues(typeof(EnumTraitType))) //Generate a page for each type of trait
+            {
+                pages.Add(new GuiHandbookTraitTypesPage(capi, type, traits));
             }
         }
 

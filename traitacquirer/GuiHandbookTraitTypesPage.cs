@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -11,8 +10,13 @@ using Vintagestory.GameContent;
 
 namespace traitacquirer
 {
-    internal class GuiHandbookExtendedTraitPage : GuiHandbookPage
+    internal class GuiHandbookTraitTypesPage : GuiHandbookPage
     {
+        private ICoreClientAPI capi;
+        private int type;
+        private string typeName;
+        private List<ExtendedTrait> traits;
+
         public string pageCode;
         public string Title;
         public string categoryCode = "trait";
@@ -26,23 +30,26 @@ namespace traitacquirer
 
         public override bool IsDuplicate => false;
 
-        public GuiHandbookExtendedTraitPage(ICoreClientAPI capi, ExtendedTrait trait)
+        public GuiHandbookTraitTypesPage(ICoreClientAPI capi, int type, List<ExtendedTrait> traits)
         {
-            Title = Lang.Get("traitname-" + trait.Code).ToSearchFriendly();
+            this.capi = capi;
+            this.type = type;
+            this.typeName = ((EnumTraitType)type).ToString();
+            this.traits = traits;
 
-            pageCode = "ExtendedTraitInfo-" + trait.Code;
+            Title = Lang.Get("traittypename-" + typeName).ToSearchFriendly();
 
-            comps = VtmlUtil.Richtextify(capi, PageInfo(trait), CairoFont.WhiteSmallText().WithLineHeightMultiplier(1.2));
+            pageCode = "TraitTypeInfo-" + typeName;
+
+            comps = VtmlUtil.Richtextify(capi, PageInfo(), CairoFont.WhiteSmallText().WithLineHeightMultiplier(1.2));
         }
 
-        private string PageInfo(ExtendedTrait trait)
+        private string PageInfo()
         {
             StringBuilder fulldesc = new StringBuilder();
-            StringBuilder attributes = new StringBuilder();
-            StringBuilder exclusivites = new StringBuilder();
 
             string colour;
-            switch (trait.Type)
+            switch ((EnumTraitType)type)
             {
                 case EnumTraitType.Positive:
                     colour = "color=\"#84ff84\""; //Green
@@ -55,38 +62,15 @@ namespace traitacquirer
                     break;
             }
 
-            fulldesc.AppendLine($"<font {colour} size=\"24\"><strong>" + Title + "</strong></font>\n");
+            fulldesc.AppendLine($"<font size=\"24\" {colour}><strong>" + Title + "</strong></font>\n");
             //fulldesc.AppendLine($"PageCode: {pageCode}");
-            fulldesc.AppendLine($"Trait Type: <a href=\"handbook://TraitTypeInfo-{trait.Type}\">" + Lang.Get("traittypename-" + trait.Type) + "</a>"); //Needs localising
-
-            string desc = Lang.GetIfExists("traitdesc-" + trait.Code);
-            if (desc != null)
+            foreach (ExtendedTrait trait in traits)
             {
-                fulldesc.AppendLine("Description: "); //Needs localising
-                fulldesc.AppendLine(desc);
-            }
-            
-            foreach (var val in trait.Attributes)
-            {
-                if (attributes.Length > 0) attributes.Append(", ");
-                attributes.Append(Lang.Get(string.Format(GlobalConstants.DefaultCultureInfo, "charattribute-{0}-{1}", val.Key, val.Value)));
-            }
-            if (attributes.Length > 0)
-            {
-                fulldesc.AppendLine("Attribute Modifiers: "); //Needs localising
-                fulldesc.Append(attributes);
-            }
-
-            if (trait.ExclusiveWith != null) {
-                foreach (var val in trait.ExclusiveWith)
+                if (trait.Type == (EnumTraitType)type)
                 {
-                    if (exclusivites.Length > 0) exclusivites.Append(", ");
-                    exclusivites.Append($"<a href=\"handbook://ExtendedTraitInfo-{val}\">" + Lang.Get("traitname-" + val) + $"</a>");
+                    fulldesc.AppendLine($"<a href=\"handbook://ExtendedTraitInfo-{trait.Code}\">" + Lang.Get("traitname-" + trait.Code) + "</a>");
                 }
-                fulldesc.AppendLine("Exclusive With: "); //Needs localising
-                fulldesc.Append(exclusivites);
             }
-
             return fulldesc.ToString();
         }
 
