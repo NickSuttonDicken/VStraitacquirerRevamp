@@ -7,9 +7,7 @@ using Vintagestory.API.Server;
 using Vintagestory.GameContent;
 using System.Linq;
 using System;
-using System.Data;
 using System.Text;
-using System.Numerics;
 
 namespace traitacquirer
 {
@@ -271,7 +269,8 @@ namespace traitacquirer
             IOrderedEnumerable<string> extratraits = Enumerable.Empty<string>().OrderBy(x => 1); ;
             if (extraTraits != null)
             {
-                extratraits = extraTraits?.OrderBy(code => (int)TraitsByCode[code].Type);
+                var cleanedTraits = extraTraits.Where(code => TraitsByCode.ContainsKey(code)).ToList();
+                extratraits = cleanedTraits?.OrderBy(code => (int)TraitsByCode[code].Type);
             }
 
             foreach (var code in extratraits)
