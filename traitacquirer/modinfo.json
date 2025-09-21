@@ -1,12 +1,13 @@
 {
     "type": "code",
-    "modid": "traitacquirer",
-    "name": "Trait Acquirer",
+    "modid": "traitacquirerrevamp",
+    "name": "Trait Acquirer Revamp",
     "authors": [
-        "Arkhael"
+        "Arkhael",
+        "Frozti"
     ],
     "description": "Allows you to acquire additional traits through gameplay.",
-    "version": "0.9.6",
+    "version": "0.9.10",
     "dependencies": {
         "game": ""
     }

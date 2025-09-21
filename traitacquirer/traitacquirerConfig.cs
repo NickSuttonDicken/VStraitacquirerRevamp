@@ -45,7 +45,7 @@ namespace traitacquirer
             traitacquirerConfig traitacquirerConfig = null;
             try
             {
-                traitacquirerConfig = new traitacquirerConfig(api.LoadModConfig<Dictionary<string, dynamic>>("traitacquirer.json"));
+                traitacquirerConfig = new traitacquirerConfig(api.LoadModConfig<Dictionary<string, dynamic>>("traitacquirerrevamp.json"));
                 if (traitacquirerConfig != null)
                 {
                     api.Logger.Notification("Mod Config successfully loaded.");
@@ -63,7 +63,7 @@ namespace traitacquirer
             }
             finally
             {
-                api.StoreModConfig<Dictionary<string, dynamic>>(traitacquirerConfig.configurables, "traitacquirer.json");
+                api.StoreModConfig<Dictionary<string, dynamic>>(traitacquirerConfig.configurables, "traitacquirerrevamp.json");
             }
             setConfig(api, traitacquirerConfig);
         }

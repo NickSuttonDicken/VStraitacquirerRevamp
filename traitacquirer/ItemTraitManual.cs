@@ -59,7 +59,7 @@ namespace Vintagestory.GameContent
         public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
         {
             base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
-            dsc.Append(Lang.Get("traitacquirer:manualtype-" + inSlot.Itemstack.Item.Variant["class"].ToString()));
+            dsc.Append(Lang.Get("traitacquirerrevampmanualtype-" + inSlot.Itemstack.Item.Variant["class"].ToString()));
         }
 
         public override WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot)

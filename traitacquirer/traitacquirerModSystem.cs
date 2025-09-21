@@ -464,9 +464,61 @@ namespace traitacquirer
         public void loadCharacterClasses() //Taken from SurvivalMod Character.cs, CharacterSystem class where it is a private method
         {
             //onLoadedUniversal();
-            this.traits = api.Assets.Get("config/traits.json").ToObject<List<ExtendedTrait>>();
-            this.characterClasses = api.Assets.Get("config/characterclasses.json").ToObject<List<CharacterClass>>();
-
+            
+            // Initialize empty collections
+            this.traits = new List<ExtendedTrait>();
+            this.characterClasses = new List<CharacterClass>();
+            
+            // Get all assets and filter for trait and class files
+            var allAssets = api.Assets.AllAssets;
+            var traitFiles = allAssets.Where(kvp => 
+                kvp.Key.Path.StartsWith("config/") && 
+                kvp.Key.Path.EndsWith("traits.json"));
+            var classFiles = allAssets.Where(kvp => 
+                kvp.Key.Path.StartsWith("config/") && 
+                kvp.Key.Path.EndsWith("characterclasses.json"));
+            
+            // Load all trait files
+            foreach (var traitFile in traitFiles)
+            {
+                try
+                {
+                    var assetTraits = api.Assets.TryGet(traitFile.Value.Location).ToObject<List<ExtendedTrait>>();
+                    if (assetTraits != null)
+                    {
+                        api.World.Logger.Debug($"[TraitAcquirer] Loading {assetTraits.Count} traits from {traitFile.Key.Path} (mod: {traitFile.Key.Domain})");
+                        this.traits.AddRange(assetTraits);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    api.World.Logger.Warning($"[TraitAcquirer] Failed to load traits from {traitFile.Key.Path}: {ex.Message}");
+                }
+            }
+            
+            // Load all character class files
+            foreach (var classFile in classFiles)
+            {
+                try
+                {
+                    var assetClasses = api.Assets.TryGet(classFile.Value.Location).ToObject<List<CharacterClass>>();
+                    if (assetClasses != null)
+                    {
+                        api.World.Logger.Debug($"[TraitAcquirer] Loading {assetClasses.Count} character classes from {classFile.Key.Path} (mod: {classFile.Key.Domain})");
+                        this.characterClasses.AddRange(assetClasses);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    api.World.Logger.Warning($"[TraitAcquirer] Failed to load character classes from {classFile.Key.Path}: {ex.Message}");
+                }
+            }
+            
+            // Remove duplicates based on Code (last loaded wins)
+            this.traits = this.traits.GroupBy(t => t.Code).Select(g => g.Last()).ToList();
+            this.characterClasses = this.characterClasses.GroupBy(c => c.Code).Select(g => g.Last()).ToList();
+            
+            api.World.Logger.Debug($"[TraitAcquirer] Loaded total: {this.traits.Count} traits, {this.characterClasses.Count} character classes");
             foreach (var trait in traits)
             {
                 TraitsByCode[trait.Code] = trait;

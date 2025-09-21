@@ -1,0 +1,11 @@
+[
+  {
+    "file": "traitacquirerrevamp/itemtypes/utility/trait-manual",
+    "op": "add",
+    "path": "/enabled",
+    "condition": {
+      "when": "classManuals",
+      "useValue": true
+    }
+  }
+]
