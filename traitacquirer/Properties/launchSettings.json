@@ -10,7 +10,7 @@
     "Server": {
       "commandName": "Executable",
       "executablePath": "dotnet",
-      "commandLineArgs": "\"$(VINTAGE_STORY)/VintagestoryServer.dll\" --tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\" --dataPath \"C:\\Users\\Roan\\Documents\\My Games\\Games\\VS\\VSMods\\Development\\TestServer\"",
+      "commandLineArgs": "\"$(VINTAGE_STORY)/VintagestoryServer.dll\" --tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\" --dataPath \"\"F:\\Modding\\Vintage Story Mods\\Test server\"",
       "workingDirectory": "$(VINTAGE_STORY)"
     },
     "ClientQuickstart": {

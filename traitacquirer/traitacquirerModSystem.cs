@@ -475,7 +475,7 @@ namespace traitacquirer
                 kvp.Key.Path.EndsWith("traits.json"));
             var classFiles = allAssets.Where(kvp => 
                 kvp.Key.Path.StartsWith("config/") && 
-                kvp.Key.Path.EndsWith("characterclasses.json"));
+                kvp.Key.Path.EndsWith("classes.json"));
             
             // Load all trait files
             foreach (var traitFile in traitFiles)
